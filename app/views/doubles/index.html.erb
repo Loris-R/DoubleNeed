@@ -1,9 +1,30 @@
 <h1>all lookalikes</h1>
 
-<div>
-  <% @doubles.each do |double| %>
-    <ul>
-      <li><%= double.name %></li>
-    </ul>
-  <% end %>
+<div class="container">
+  <div class="cards">
+    <% @doubles.each do |double| %>
+      <%= link_to double_path(double) do %>
+      <div class="card-category card-trip">
+        <%= cl_image_tag double.photo.key, crop: :fill %>
+        <div class="card-trip-infos">
+          <div>
+            <div class="double-name">
+              <h2><%= double.name %></h2>
+              <% if double.user_id == current_user.id %>
+                <p>| <%= link_to 'Edit', edit_double_path(double) %></p>
+                <p>| <%= link_to 'Delete', double_path(double), method: :delete,
+                                                                    data: { confirm: "Etes-vous sûr ?" } %>
+                </p>
+              <% end %>
+            </div>
+            <p><%= double.description %></p>
+          </div>
+          <div>
+            <h2><%= double.price_per_day %>€</h2>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,14 @@
+<div class="container col-lg-5">
+  <h1>edit <%= @double.name %></h1>
+  <div>
+    <%= simple_form_for @double do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :city %>
+      <%= f.input :country, as: :text %>
+      <%= f.input :price_per_day %>
+      <%= f.input :photo, as: :file %>
+      <%= f.button :submit, class: "btn btn-gradient", value: "Create Lookalike" %>
+    <% end %>
+  </div>
+</div>

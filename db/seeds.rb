@@ -40,12 +40,14 @@ d = 1
 20.times do
   double = Double.new(user_id: User.all.sample.id,
                       name: Faker::FunnyName.name,
-                      description: Faker::Lorem.paragraphs,
+                      description: Faker::Lorem.paragraph_by_chars,
                       city: Faker::Address.city,
                       country: country.sample,
                       price_per_day: rand(40..650),
                       available: Faker::Boolean.boolean(true_ratio: 0.7)
                       )
+  file = URI.open(Faker::LoremFlickr.image(size: '300x300', search_terms: ['portrait']))
+  double.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   double.save!
   puts "Lookalikes created : #{d}"
   d += 1

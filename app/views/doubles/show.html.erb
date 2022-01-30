@@ -1,0 +1,19 @@
+<div class="container col-lg-5">
+<h1><%= @double.name %> Profil</h1>
+  <div class="card-trip-show">
+  <%= cl_image_tag @double.photo.key, crop: :fill %>
+  <div class="card-trip-infos-show">
+    <div>
+      <h2><%= @double.name %></h2>
+      <p><%= @double.description %></p>
+    </div>
+    <div class="card-trip-datas-show">
+      <div>
+        <h5 class="card-trip-pricing">1 day : <strong><%= @double.price_per_day %>€</strong></h5>
+        <h5 class="card-trip-pricing">based on <strong><%= @double.city %>, <%= @double.country %></strong></h5>
+      </div>
+      <%= link_to "Book now", new_double_booking_path(@double) , class: "btn btn-flat" %>
+    </div>
+  </div>
+</div>
+</div>

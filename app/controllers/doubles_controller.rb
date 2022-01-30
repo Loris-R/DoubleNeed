@@ -26,7 +26,7 @@ class DoublesController < ApplicationController
 
   def update
     @double = Double.find(params[:id])
-    if @double.update!
+    if @double.update(double_params)
       redirect_to double_path(@double)
     else
       render 'edit'
